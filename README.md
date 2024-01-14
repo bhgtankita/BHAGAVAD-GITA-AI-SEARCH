@@ -4,15 +4,29 @@ This application will help answering the questions from the Bhagavad Gita. Here 
 
 ![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/c030b6b8-3da3-4077-8cfc-1913fab94b4d)
 
+We use Streamlit for creating the application.
+
 # Here is the Architecture:
+
+We put External datasources (pdfs or word files etc.) into Azure AI Search and create indexes. When user fires the query, orchestrator will pass it to Azure AI Search. The Azure AI Search gets back the knowledge from exterbal datasources and the knowledge along with the prompt again sent back to Azure OpenAI LLM by orchestrator. It gets the response back and pass it to the user.
 
 ![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/c9da0206-7678-48b2-977f-b3eb5a80c966)
 
-# Data Ingestion:
+# Architecture Breakdown:
+# 1. Data Ingestion:
+
+File is broken into pages and uploaded to Azure Blob. The program will breaks each page into sections and each section will be loaded to Azure AI Search. Lastly indexing of each section is performed.
 
 ![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/ce87710e-7318-480b-ac37-eb50422aee96)
 
+Here is the illustration:
+
 ![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/d9e580cf-28bd-4927-8a90-5092c619dc1e)
+
+# 2. Query
+
+![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/12fdd7b8-48d5-41ce-967c-345fcec75474)
+
 
 # Example - Case 1: 
 
@@ -21,3 +35,13 @@ This application will help answering the questions from the Bhagavad Gita. Here 
 # Example - Case 2: 
 
 ![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/8fd84ec6-c625-4cdf-ba6d-a754e53066f7)
+
+# Execution:
+
+1. You need to create .env file with all required configurations:
+![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/cf839fde-ec93-43a4-85f2-ef506596bb45)
+
+2. Run install.ipynb file cell by cell
+3. Run upload_docs.ipynb file cell by cell
+4. Run below command in terminal
+     streamlit run app.py
