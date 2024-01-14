@@ -19,7 +19,8 @@ import streamlit as st
 st.header('Search Engine - Document')
 
 user_input = st.text_input('Enter your question here:', 
-                           'What is Diploblastic and Triploblastic Organisation ?')
+                            'What is the summary of Sankhya Yoga ?')
+                        #    'What is Atma ?')
 
 if st.button('Submit'):
 
