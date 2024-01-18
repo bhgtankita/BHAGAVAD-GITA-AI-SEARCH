@@ -6,7 +6,13 @@ This application will help answering the questions from the Bhagavad Gita. Here 
 
 We use Streamlit for creating the application.
 
-# Here is the Architecture:
+# RAG - Retrieval Augmented Generation
+
+Its a technique which generates the response based on augmented prompt using our custom datasource.
+
+![image](https://github.com/bhgtankita/BHAGAVAD-GITA-AI-SEARCH/assets/38418279/827fbafb-3d1a-4254-b96b-45f3c0aa5033)
+
+# Here is Application Architecture:
 
 We put External datasources (pdfs or word files etc.) into Azure AI Search and create indexes. When user fires the query, orchestrator will pass it to Azure AI Search. The Azure AI Search gets back the knowledge from exterbal datasources and the knowledge along with the prompt again sent back to Azure OpenAI LLM by orchestrator. It gets the response back and pass it to the user.
 
